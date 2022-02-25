@@ -3,12 +3,40 @@
 {% block bory %}
     <div class="container mt-3">
         <div align="center">
-        <h1 style="color: midnightblue"><strong><font size="5">Comunidade da Engenharia Computacional - UFJF</font></strong></h1>
-        <h2 style="color: darkcyan"><font size="4">Usuários</font></h2>
+        <h1 style="color: black"><strong><font size="5">Comunidade CAED - UFJF</font></strong></h1>
+        <h2 style="color: lightslategrey"><font size="4">Integração entre professores</font></h2>
         <hr>
         </div>
-    </div>
+        {% for post in posts %}
 
+            <div class="field_form row border mt-4 p-2 publications">
+                <div class="col col-2">
+                    <div class="image pe-3 "> <img src="{{url_for('static', filename='image_id_user/{}'.format(post.autor.perf_photo))}}" class="rounded" width="170"> </div>
+                    <strong>{{ post.autor.username }}</strong>
+                    <div class="row justify-content-center">
+                        {% if post.autor.changes == '' %}
+                            <button type="button" class="btn btn-sm btn-light mt-2" disabled>Usuário não solicitou mudanças.</button>
+                        {% else %}
+                            {% for change in post.autor.changes.split(';') %}
+                                 <button type="button" class="btn btn-sm btn-dark mt-2" disabled>{{ change }}</button>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col col-9">
+                        <h3>
+                            <strong> <font size="4">{{ post.title }}</font></strong>
+                            <small class="text-muted" style="font-size: 15px">
+                            {{ post.date_create.strftime('%d / %m / %Y')}}
+                            </small>
+                        </h3>
+                    <p>{{ post.bory_text }}</p>
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 {% endblock %}
-</body>
-</html>

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from general_system.models import Usuario
 from flask_login import current_user
@@ -39,4 +39,16 @@ class FormEditProfile(FlaskForm):
             usuario = Usuario.query.filter_by(email=email.data).first()
             if usuario:
                 raise ValidationError('E-mail já cadastrado. Por gentileza, inclua outro email.')
+
+class FormCreatePost (FlaskForm):
+    title = StringField('Título do post', validators=[DataRequired(),Length(2, 140)])
+    bory_text = TextAreaField('Escreva seu post aqui: ', validators=[DataRequired()])
+    button_submit_create_post = SubmitField('Criar Post')
+
+    work_change_genre = BooleanField('Trocar de gênero')
+    work_change_adjective = BooleanField('Trocar adjetivos por sinônimo/antônimos')
+    work_paraphrase1 = BooleanField('Paráfrase i')
+    work_paraphrase2 = BooleanField('Paráfrase ii')
+    work_paraphrase3 = BooleanField('Paráfrase iii')
+    work_canonical = BooleanField('Palavras canônicas')
 

@@ -76,3 +76,7 @@ hr .new1 {
 .date {
     background-color: #ccc
 }
+
+.field_form {
+    background: #f5f5f5  !important;
+}

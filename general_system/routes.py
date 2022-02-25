@@ -4,8 +4,8 @@ from flask import render_template, request, flash, redirect, url_for
 from flask_login import logout_user, login_user, current_user, login_required
 from PIL import Image
 from general_system import app, data_base, bcrypt
-from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile
-from general_system.models import Usuario
+from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile, FormCreatePost
+from general_system.models import Usuario, Post
 
 
 @app.route('/')
@@ -16,7 +16,8 @@ def home():
 @app.route('/atividades')
 @login_required
 def works():
-    return render_template('works.html')
+    posts = Post.query.order_by(Post.id.desc())
+    return render_template('works.html', posts=posts)
 
 
 @app.route("/register_login", methods=['GET', 'POST'])
@@ -108,7 +109,25 @@ def edit_profile():
     return render_template('edit_profile.html', image_id=image_id, form_profile=form_profile)
 
 
+def current_changes(form_post):
+    list_changes = []
+    # Add the text from the label field for the courses.
+    for field_form in form_post:
+        if 'work_' in field_form.name:
+            if field_form.data:
+                list_changes.append(field_form.label.text)
+    return ';'.join(list_changes)
+
+
 @app.route("/post/create", methods=['GET', 'POST'])
 @login_required
 def create_post():
-    return render_template('create_posts.html')
+    form_post = FormCreatePost()
+    if form_post.validate_on_submit():
+        post = Post(title=form_post.title.data, bory_text=form_post.bory_text.data, id_user=current_user.id)
+        data_base.session.add(post)
+        current_user.changes = current_changes(form_post)
+        data_base.session.commit()
+        flash(f'Post criado com sucesso!', 'alert-success')
+        return redirect(url_for('home'))
+    return render_template('create_posts.html', form_post=form_post)
