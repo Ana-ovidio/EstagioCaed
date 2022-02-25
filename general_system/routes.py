@@ -1,4 +1,5 @@
 from flask import render_template, request, flash, redirect, url_for
+from flask_login import logout_user, login_user, current_user, login_required
 from general_system import app, data_base, bcrypt
 from general_system.forms import FormCreateAccount, FormLogin
 from general_system.models import Usuario
@@ -10,6 +11,7 @@ def home():
 
 
 @app.route('/atividades')
+@login_required
 def works():
     return render_template('works.html')
 
@@ -33,8 +35,33 @@ def register_login():
         if usuario and bcrypt.check_password_hash(usuario.password, form_login.password.data):
             login_user(usuario, remember=form_login.remember_password.data)
             flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
-            return redirect(url_for('home'))
+            next_parameter = request.args.get('next')
+            if next_parameter:
+                return redirect(next_parameter)
+            else:
+                return redirect(url_for('home'))
         else:
             flash(f'Falha no Login. E-mail ou Senha Incorretos.', 'alert-danger')
 
     return render_template('register_login.html', form_account=form_account, form_login=form_login)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash(f'Logout realizado com sucesso!', 'alert-success')
+    return redirect(url_for('home'))
+
+
+@app.route('/my_profile')
+@login_required
+def my_profile():
+    return render_template('my_profile.html')
+
+
+@app.route("/post/create", methods=['GET', 'POST'])
+@login_required
+def create_post():
+    return render_template('create_posts.html')
+
