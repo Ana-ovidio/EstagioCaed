@@ -1,5 +1,8 @@
+import secrets
+import os
 from flask import render_template, request, flash, redirect, url_for
 from flask_login import logout_user, login_user, current_user, login_required
+from PIL import Image
 from general_system import app, data_base, bcrypt
 from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile
 from general_system.models import Usuario
@@ -61,11 +64,47 @@ def my_profile():
     return render_template('my_profile.html', image_id=image_id)
 
 
+def save_image_profile(image_profile):
+    # code of image
+    code_img = secrets.token_hex(8)
+    # filename = name of the image with the extension
+    # separate the name of the extension
+    name_img, extension_img = os.path.splitext(image_profile.filename)
+
+    # group name+code+extension
+    name_file = name_img + code_img + extension_img
+
+    # complete_path to save file in the images directory
+    all_path = os.path.join(app.root_path, 'static/image_id_user', name_file)
+
+    # Reduce the px of image and save image in the directory
+    length = (400, 400)
+    reduced_image = Image.open(image_profile)
+    reduced_image.thumbnail(length)
+    reduced_image.save(all_path)
+
+    return name_file
+
+
 @app.route("/my_profile/edit_profile", methods=['GET', 'POST'])
 @login_required
 def edit_profile():
     form_profile = FormEditProfile()
     image_id = url_for('static', filename='image_id_user/{}'.format(current_user.perf_photo))
+    # Changing email or username
+    if form_profile.validate_on_submit():
+        current_user.username = form_profile.username.data
+        current_user.email = form_profile.email.data
+        if form_profile.photo_profile.data:
+            name_file = save_image_profile(form_profile.photo_profile.data)
+            current_user.perf_photo = name_file
+        data_base.session.commit()
+        flash(f'Edição feita com sucesso!', 'alert-success')
+        return redirect(url_for('my_profile'))
+    # Automatic fill in the forms.
+    elif request.method == 'GET':
+        form_profile.username.data = current_user.username
+        form_profile.email.data = current_user.email
     return render_template('edit_profile.html', image_id=image_id, form_profile=form_profile)
 
 
@@ -73,4 +112,3 @@ def edit_profile():
 @login_required
 def create_post():
     return render_template('create_posts.html')
-

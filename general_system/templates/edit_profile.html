@@ -48,17 +48,6 @@
                             {% endif %}
                         </div>
 
-                        <hr>
-                        <p><strong> Cursos: </strong></p>
-                        {% for field_form in form_profile%}
-                            {% if 'course_' in field_form.name %}
-                                <div class = 'form-group'>
-                                    {{field_form(class="form-check-input")}}
-                                    {{field_form.label(class="form-check-label")}}
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-
                     </fieldset>
                     {{form_profile.button_submit_edit_profile (class="btn btn-outline-dark btn-sm mt-2")}}
                 </form>

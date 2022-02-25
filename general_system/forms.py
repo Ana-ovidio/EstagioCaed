@@ -32,13 +32,6 @@ class FormEditProfile(FlaskForm):
     error_message = 'Extensão inválida, insira arquivos com jpeg, jpg, jfif ou png.'
     photo_profile = FileField('Atualizar foto de perfil: ', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'jfif'],
                                                                                     message=error_message)])
-    work_change_genre = BooleanField('Trocar de gênero')
-    work_change_adjective = BooleanField('Trocar adjetivos por sinônimo/antônimo')
-    work_paraphrase_1 = BooleanField('Paráfrase i')
-    work_paraphrase_2 = BooleanField('Paráfrase ii')
-    work_paraphrase_3 = BooleanField('Paráfrase iii')
-    work_canonical = BooleanField('Verifica palavras canônicas')
-
     button_submit_edit_profile = SubmitField('Confirmar Edição')
 
     def validate_email(self, email):
