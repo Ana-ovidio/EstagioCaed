@@ -1,7 +1,7 @@
 from flask import render_template, request, flash, redirect, url_for
 from flask_login import logout_user, login_user, current_user, login_required
 from general_system import app, data_base, bcrypt
-from general_system.forms import FormCreateAccount, FormLogin
+from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile
 from general_system.models import Usuario
 
 
@@ -57,7 +57,16 @@ def logout():
 @app.route('/my_profile')
 @login_required
 def my_profile():
-    return render_template('my_profile.html')
+    image_id = url_for('static', filename='image_id_user/{}'.format(current_user.perf_photo))
+    return render_template('my_profile.html', image_id=image_id)
+
+
+@app.route("/my_profile/edit_profile", methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form_profile = FormEditProfile()
+    image_id = url_for('static', filename='image_id_user/{}'.format(current_user.perf_photo))
+    return render_template('edit_profile.html', image_id=image_id, form_profile=form_profile)
 
 
 @app.route("/post/create", methods=['GET', 'POST'])

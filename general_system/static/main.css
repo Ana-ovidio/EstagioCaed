@@ -20,7 +20,7 @@ body {
 
 
 .name {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold
 }
 
@@ -34,7 +34,7 @@ body {
 }
 
 .number {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold
 }
 
