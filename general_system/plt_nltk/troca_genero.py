@@ -1,5 +1,5 @@
 import nltk
-from tratamento import TrocaGenero
+from plt_nltk.class_troca_genero import TrocaGenero
 
 
 def tratamento_sentenca(sentenca):
@@ -52,6 +52,6 @@ def integra_funcoes (sentenca):
     tokens = tokenizacao(sentenca)
     genero = define_genero(tokens)
     nova_sentenca = modifica_genero(genero, tokens)
-    return  nova_sentenca
+    return nova_sentenca
 
 
