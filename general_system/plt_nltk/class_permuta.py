@@ -8,36 +8,38 @@ class Permutacoes():
         self.oracoes = oracoes
 
     def separa_elementos_oracao(self):
-
         sujeito = []
         predicado = []
-
         # Separar o sujeito do predicado
         for i, tag in enumerate(self.tagged):
             if tag[1][0] == 'V':
                 break
             else:
-                sujeito.append(tag)
+                sujeito.append(tag[0])
 
         for j in range(i, len(self.tagged)):
             predicado.append(self.tagged[j][0])
-        predicado_concatenado = []
-        predicado_concatenado.append(' '.join(predicado))
+        predicado_concatenado = [' '.join(predicado)]
 
-        # Separar o sujeito principal do aposto se exixtir
+        # Separar o sujeito principal do aposto
         aposto = []
         sujeito_principal = []
 
-        for i in range(1, len(sujeito)):
+        qnt_virgulas = 0
+        posicao_virgulas = []
+        for i, tag in enumerate(self.tagged):
+            if tag[0] == ',':
+                qnt_virgulas = qnt_virgulas + 1
+                posicao_virgulas.append(i)
 
-            if (sujeito[i][1] == 'NNP') and (sujeito[i - 1][1] in ['NN', 'NNS']):
-                sujeito_principal.append(sujeito[i][0])
-                aposto.append(sujeito[i - 1][0])
-            elif (sujeito[i][1] == 'NNP') and (sujeito[i - 1][1] == 'NNP'):
-                sujeito_principal.append(sujeito[i][0])
-            else:
-                aposto.append(sujeito[i - 1][0])
-
+        if len(posicao_virgulas) == 1:
+            aposto = sujeito[:posicao_virgulas[0]]
+            sujeito_principal = sujeito[posicao_virgulas[0] + 1:]
+        elif len(posicao_virgulas) == 2:
+            aposto = sujeito[posicao_virgulas[0] + 1:posicao_virgulas[1]]
+            sujeito_principal = sujeito[:posicao_virgulas[0]] + sujeito[posicao_virgulas[1] + 1:]
+        else:
+            sujeito_principal = sujeito
         suj = []  # sujeito em string
         aposto_suj = []  # aposto em string
 
@@ -46,27 +48,37 @@ class Permutacoes():
             aposto_suj.append(' '.join(aposto))
         else:
             aposto_suj.append(None)
-
         return suj[0], aposto_suj[0], predicado_concatenado
 
     def permutacao_sujeito_aposto(self, suj, aposto=None):
 
-        if aposto != None:
+        if aposto is not None:
             primeira_permutacao = list(permutations([suj, aposto]))
+
+            inserir_virgula = []
+            permutacoes_string = []
 
             # Tranformar tuplas em lista para permitir modificação
             permutacoes = []
             for tupla in primeira_permutacao:
                 permutacoes.append(list(tupla))
 
-            # Inserir vírgula para inversão da ordem canônica
             for i, permutacao in enumerate(permutacoes):
-                if permutacao[0] == aposto:
+                # A primeira sentenca da permutação começa com letra maiúscula
+                if permutacao[0][0] == permutacao[0][0].upper():
                     pass
                 else:
-                    permutacao[1] = permutacao[1].lower()
-                    permutacao.insert(1, ',')
-                    permutacao.insert(3, ',')
+                    lista_palavras = list(permutacao[0])
+                    lista_palavras[0] = lista_palavras[0].upper()
+                    permutacao[0] = ''.join(lista_palavras)
+                # A segunda sentenca da permutação começa com letra maiúscula
+                if permutacao[1][0] == permutacao[1][0].upper():
+                    lista_palavras = list(permutacao[1])
+                    lista_palavras[0] = lista_palavras[0].lower()
+                    permutacao[1] = ''.join(lista_palavras)
+                else:
+                    pass
+
             # Concatenar strings permutadas
             permutacoes_concatenadas = []
             for i in range(len(permutacoes)):
@@ -79,6 +91,7 @@ class Permutacoes():
 
     def permutacao_sujeito_predicado(self, sujeitos, predicado):
 
+
         primeira_permutacao = []
         for sujeito in sujeitos:
             primeira_permutacao.append(list(permutations([sujeito, predicado[0]])))
@@ -88,18 +101,21 @@ class Permutacoes():
         for lista in primeira_permutacao:
             for tupla in lista:
                 permutacoes.append(list(tupla))
-
-        # Incluir vírgula caso o predicado venha antes
-        for i, permutacao in enumerate(permutacoes):
-
-            if permutacao[0] == predicado[0]:
-                # Mudar apenas a letra inicial
-                lista_strings = list(permutacao[0])
-                lista_strings[0] = lista_strings[0].upper()
-                permutacao[0] = ''.join(lista_strings)
-                permutacao.insert(1, ',')
-            else:
-                pass
+            for i, permutacao in enumerate(permutacoes):
+                # A primeira sentenca da permutação começa com letra maiúscula
+                if permutacao[0][0] == permutacao[0][0].upper():
+                    pass
+                else:
+                    lista_palavras = list(permutacao[0])
+                    lista_palavras[0] = lista_palavras[0].upper()
+                    permutacao[0] = ''.join(lista_palavras)
+                # A segunda sentenca da permutação começa com letra maiúscula
+                if permutacao[1][0] == permutacao[1][0].upper():
+                    lista_palavras = list(permutacao[1])
+                    lista_palavras[0] = lista_palavras[0].lower()
+                    permutacao[1] = ''.join(lista_palavras)
+                else:
+                    pass
 
             # Concatenar strings permutadas
             permutacoes_concatenadas = []

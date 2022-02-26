@@ -1,7 +1,8 @@
 import nltk
+import pyinflect
 import spacy
 from deep_translator import GoogleTranslator
-from plt_nltk.class_mod_vozes import MudaVoz
+from class_mod_vozes import MudaVoz
 
 spacy.cli.download("en_core_web_sm")
 
@@ -74,13 +75,11 @@ def inverter_voz(traduzir_ingles, tagged, posicao_verbo, posicao_sujeito, posica
         for i in range(len(doc_dep)):
             token = doc_dep[i]
             if token.tag_ == 'VBD':
-                print(type(token))
                 verbo_participio_passado = token._.inflect("VBN")
 
         # Representa uma lista com a sentenca ordenada para outra voz
         traducao_para_portugues = mv.modificar_para_passiva(
             verbo_participio_passado)
-    print(traducao_para_portugues)
     return traducao_para_portugues
 
 

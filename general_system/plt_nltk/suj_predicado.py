@@ -1,10 +1,12 @@
 import nltk
 from deep_translator import GoogleTranslator
-from plt_nltk.class_permuta import Permutacoes
+from class_permuta import Permutacoes
 
 
 def tokenizacao(traduzir_ingles):
     tokens = nltk.word_tokenize(traduzir_ingles)
+    if '.' in tokens:
+        tokens.remove('.')
     # Lista de tuplas cujos elementos são respectivamente a palavra e sua morfologia
     tagged = nltk.pos_tag(tokens)
     return tagged

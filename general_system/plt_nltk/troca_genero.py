@@ -1,5 +1,5 @@
 import nltk
-from plt_nltk.class_troca_genero import TrocaGenero
+from class_troca_genero import TrocaGenero
 
 
 def tratamento_sentenca(sentenca):

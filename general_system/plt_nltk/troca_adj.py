@@ -6,11 +6,20 @@ from deep_translator import GoogleTranslator
 
 def tokenizacao(traduzir_ingles):
     tokens = nltk.word_tokenize(traduzir_ingles)
-    # Lista de tuplas cujos elementos são respectivamente a palavra e sua morfologia
     tagged = nltk.pos_tag(tokens)
+
+    classificacoes = []
     for tag in tagged:
-        if tag[1] == 'JJ':
+        if tag[1] in ['JJ', 'VBN', 'VBZ', 'VBD', 'NN', 'NNS']:
+            classificacoes.append(tag[1])
+    print(classificacoes)
+    parametro_mudanca = choices(classificacoes)
+    print(parametro_mudanca)
+    print(tagged)
+    for tag in tagged:
+        if tag[1] == parametro_mudanca[0]:
             adjetivo = tag[0]
+            break
         else:
             adjetivo = None
 
@@ -32,7 +41,6 @@ def sinonimos_antonimos(adjetivo):
 
 def escolhe_adjetivo(synonyms, antonyms):
     tipo_troca = choices(['synonyms', 'antonyms'])
-    tipo_troca
 
     if (len(antonyms) == 0) and (len(synonyms) != 0):
         novo_adjetivo = choices(synonyms)
