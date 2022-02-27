@@ -5,9 +5,10 @@ import sem_sujeito
 import suj_predicado
 import modifica_vozes
 import separacao_silabica
+from complexidade import Complexidade
 
 lista_modificacoes = ['Paráfrase iii']
-sentenca = 'A mulher pegou o objeto'
+sentenca = 'A mulher pegou o objeto.'
 
 opcoes_mudanca = ['Trocar de gênero',
                   'Trocar adjetivos por sinônimo/antônimos',
@@ -16,12 +17,17 @@ opcoes_mudanca = ['Trocar de gênero',
                   'Paráfrase iii',
                   'Palavras canônicas']
 
+cmplx = Complexidade(sentenca, lista_modificacoes, opcoes_mudanca)
+nivel_ensino = cmplx.define_complexidade()
+
+
 horario = time.strftime("%Y%m%d-%H%M%S")
 caminho = '../../results/'
-with open(caminho+f'{horario}.txt', 'w') as txt:
+with open(caminho + f'{horario}.txt', 'w') as txt:
     txt.write(f'Sentença informada pelo autor/ pela autora:\n')
-    txt.write(f'{sentenca}\n\n')
-    txt.write(f'MODIFICAÇÕES\n')
+    txt.write(f'{sentenca}\n')
+    txt.write('----------------------------------------')
+    txt.write(f'\n\nMODIFICAÇÕES\n')
     for modificacao in lista_modificacoes:
 
         if modificacao == opcoes_mudanca[0]:
@@ -64,4 +70,6 @@ with open(caminho+f'{horario}.txt', 'w') as txt:
                 txt.write(f'{palavra}\n')
             txt.write('----------------------------------------')
             txt.write('\n')
+    txt.write(f'\nNÍVEL DE COMPLEXIDADE: {nivel_ensino}\n')
 txt.close()
+
