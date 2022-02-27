@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from general_system.models import Usuario
+from general_system.models import Usuario, Post
 from flask_login import current_user
 
 
@@ -40,8 +40,9 @@ class FormEditProfile(FlaskForm):
             if usuario:
                 raise ValidationError('E-mail já cadastrado. Por gentileza, inclua outro email.')
 
-class FormCreatePost (FlaskForm):
-    title = StringField('Título do post', validators=[DataRequired(),Length(2, 140)])
+
+class FormCreatePost(FlaskForm):
+    title = StringField('Título do post', validators=[DataRequired(), Length(2, 140)])
     bory_text = TextAreaField('Escreva seu post aqui: ', validators=[DataRequired()])
     button_submit_create_post = SubmitField('Criar Post')
 
@@ -52,3 +53,8 @@ class FormCreatePost (FlaskForm):
     work_paraphrase3 = BooleanField('Paráfrase iii')
     work_canonical = BooleanField('Palavras canônicas')
 
+    def validate_title(self, title):
+        current_title = title.data
+        post = Post.query.filter_by(title=current_title).first()
+        if post:
+            raise ValidationError('Este título já está registrado. Por favor, insira outro título.')

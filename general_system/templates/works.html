@@ -14,10 +14,10 @@
                     <div class="image pe-3 "> <img src="{{url_for('static', filename='image_id_user/{}'.format(post.autor.perf_photo))}}" class="rounded" width="170"> </div>
                     <strong>{{ post.autor.username }}</strong>
                     <div class="row justify-content-center">
-                        {% if post.autor.changes == '' %}
+                        {% if post.changes == '' %}
                             <button type="button" class="btn btn-sm btn-light mt-2" disabled>Usuário não solicitou mudanças.</button>
                         {% else %}
-                            {% for change in post.autor.changes.split(';') %}
+                            {% for change in post.changes.split(';') %}
                                  <button type="button" class="btn btn-sm btn-dark mt-2" disabled>{{ change }}</button>
                             {% endfor %}
                         {% endif %}

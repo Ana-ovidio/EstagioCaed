@@ -125,8 +125,8 @@ def create_post():
     form_post = FormCreatePost()
     if form_post.validate_on_submit():
         post = Post(title=form_post.title.data, bory_text=form_post.bory_text.data, id_user=current_user.id)
+        post.changes = current_changes(form_post)
         data_base.session.add(post)
-        current_user.changes = current_changes(form_post)
         data_base.session.commit()
         flash(f'Post criado com sucesso!', 'alert-success')
         return redirect(url_for('home'))

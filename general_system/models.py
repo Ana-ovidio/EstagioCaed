@@ -15,12 +15,13 @@ class Usuario(data_base.Model, UserMixin):
     password = data_base.Column(data_base.String, nullable=False)
     perf_photo = data_base.Column(data_base.String, default='default.jpg')
     posts = data_base.relationship('Post', backref='autor', lazy=True)
-    changes = data_base.Column(data_base.String, nullable=False, default='')
+
 
 
 class Post(data_base.Model):
     id = data_base.Column(data_base.Integer, primary_key=True)
-    title = data_base.Column(data_base.String, nullable=False)
+    title = data_base.Column(data_base.String, nullable=False, unique=True)
     bory_text = data_base.Column(data_base.Text, nullable=False)
     date_create = data_base.Column(data_base.DateTime, nullable=False, default=datetime.utcnow)
     id_user = data_base.Column(data_base.Integer, data_base.ForeignKey('usuario.id'), nullable=False)
+    changes = data_base.Column(data_base.String, nullable=False, default='')
