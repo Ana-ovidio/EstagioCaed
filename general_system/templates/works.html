@@ -25,12 +25,14 @@
 
                 </div>
                 <div class="col col-9">
+                    <a style="text-decoration: none" href="{{ url_for('expose_post', post_id=post.id) }}">
                         <h3>
                             <strong> <font size="4">{{ post.title }}</font></strong>
                             <small class="text-muted" style="font-size: 15px">
                             {{ post.date_create.strftime('%d / %m / %Y')}}
                             </small>
                         </h3>
+                    </a>
                     <p>{{ post.bory_text }}</p>
                 </div>
 

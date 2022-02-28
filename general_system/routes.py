@@ -1,6 +1,6 @@
 import secrets
 import os
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, abort
 from flask_login import logout_user, login_user, current_user, login_required
 from PIL import Image
 from general_system import app, data_base, bcrypt
@@ -129,8 +129,6 @@ def create_post():
         post.changes = current_changes(form_post)
         data_base.session.add(post)
         data_base.session.commit()
-        print(post.changes)
-        print(type(post.changes))
 
         if ';' in post.changes:
             list_changes = post.changes.split(';')
@@ -138,9 +136,49 @@ def create_post():
             list_changes = [post.changes]
 
         if post.changes != '':
-            modifica_bory_text(list_changes, post.bory_text, str(post.id_user)+'_'+post.title)
+            modifica_bory_text(list_changes, post.bory_text, str(post.id_user) + '_' + post.title)
         else:
             flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
         flash(f'Post criado com sucesso!', 'alert-success')
         return redirect(url_for('home'))
     return render_template('create_posts.html', form_post=form_post)
+
+
+@app.route('/expose_post/<post_id>', methods=['GET', 'POST'])
+@login_required
+def expose_post(post_id):
+    post = Post.query.get(post_id)
+    if current_user == post.autor:
+        # form_edit_post receive the same form of the post's form.
+        form_edit_post = FormCreatePost()
+        # Automatic fill in the forms.
+        if request.method == 'GET':
+            form_edit_post.title.data = post.title
+            form_edit_post.bory_text.data = post.bory_text
+        # Contrary of the above struct.
+        # The user will fill the fields.
+        elif form_edit_post.validate_on_submit():
+            post.title = form_edit_post.title.data
+            post.bory_text = form_edit_post.bory_text.data
+            post.changes = current_changes(form_edit_post)
+            # Save in the base data.
+            data_base.session.commit()
+            flash(f'Post editado com sucesso!', 'alert-success')
+            return redirect(url_for('home'))
+    else:
+        form_edit_post = None
+
+    return render_template('expose_post.html', post=post, form_post=form_edit_post)
+
+
+@app.route('/expose_post/<post_id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get(post_id)
+    if current_user == post.autor:
+        data_base.session.delete(post)
+        data_base.session.commit()
+        flash(f'Post excluido com sucesso', 'alert-warning')
+        return redirect(url_for('home'))
+    else:
+        abort(403)

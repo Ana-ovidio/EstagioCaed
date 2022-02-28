@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block bory %}
+
+    <div class="container mt-3">
+        <div class="field_form row border mt-4 p-2 publications">
+            <div class="col col-2">
+                <div class="image pe-3 "> <img src="{{url_for('static', filename='image_id_user/{}'.format(post.autor.perf_photo))}}" class="rounded" width="170"> </div>
+                <strong>{{ post.autor.username }}</strong>
+                <div class="row justify-content-center">
+                    {% if post.changes == '' %}
+                        <button type="button" class="btn btn-sm btn-light mt-2" disabled>Usuário não solicitou mudanças.</button>
+                    {% else %}
+                        {% for change in post.changes.split(';') %}
+                             <button type="button" class="btn btn-sm btn-dark mt-2" disabled>{{ change }}</button>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="col col-9">
+                    <h3>
+                        <strong> <font size="4">{{ post.title }}</font></strong>
+                        <small class="text-muted" style="font-size: 15px">
+                        {{ post.date_create.strftime('%d / %m / %Y')}}
+
+                        {%if form_post %}
+                           -- <a style="text-decoration: none" href="#form_editpost">Editar post</a>
+                            / <a class="text-danger" style="text-decoration: none" href="#" data-bs-toggle="modal" data-bs-target="#DeletePost">Excluir Post</a>
+                        {% endif %}
+
+                        </small>
+                    </h3>
+                <p>{{ post.bory_text }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+{% if form_post %}
+        <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="" class="border p-4 mt-2">
+                    {{ form_post.csrf_token }}
+                    <legend><strong>Criar Post</strong></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form_post.title.label(class="form-control-label") }}
+                            {% if form_post.title.errors %}
+                                {{ form_post.title(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.title(class="form-control") }}
+                            {% endif %}
+                        </div>
+                         <div class="form-group">
+                            {{ form_post.bory_text.label(class="form-control-label") }}
+                            {% if form_post.bory_text.errors %}
+                                {{ form_post.bory_text(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form_post.bory_text.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_post.bory_text(class="form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <hr>
+                        <p><strong> Modificações: </strong></p>
+                        {% for field_form in form_post%}
+                            {% if 'work_' in field_form.name %}
+                                <div class = 'form-group'>
+                                    {{field_form(class="form-check-input")}}
+                                    {{field_form.label(class="form-check-label")}}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    </fieldset>
+                    {{ form_post.button_submit_create_post(class="btn btn-secondary btn-sm mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="DeletePost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Deseja realmente excluir este post? Tal ação não pode ser desfeita!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+          <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+            <button type="submit" class="btn btn-danger">Excluir Post</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
