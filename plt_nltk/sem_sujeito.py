@@ -13,20 +13,42 @@ def tokenizacao(traduzir_ingles):
 
 def separa_oracoes(tagged):
     primeira_oracao = []
-
-    for i in range(1, len(tagged)):
-        if (tagged[i][1][0] == 'V') and (tagged[i - 1][1][0] == 'V'):
-            primeira_oracao.append(tagged[i - 1][0])
-            primeira_oracao.append(tagged[i][0])
-
-            primeiro_verbo = tagged[i - 1]
-            segundo_verbo = tagged[i]
-
-            tagged.remove(primeiro_verbo)
-            tagged.remove(segundo_verbo)
+    for i, tag in enumerate(tagged):
+        if tag[1][0] == 'N':
+            existe_verbo = False
             break
+        elif tag[1][0] == 'V':
+            existe_verbo = True
+            break
+        else:
+            primeira_oracao.append(tag)
 
-    segunda_oracao = [tagged[i][0] for i in range(len(tagged))]
+    if existe_verbo == True:
+        primeira_oracao.append(tag)
+        i = i + 1
+        while i != len(tagged) - 1:
+            if tagged[i][1][0] == 'V':
+                primeira_oracao.append(tagged[i])
+                i = i + 1
+            else:
+                break
+        segunda_oracao = tagged[i + 1:]
+    else:
+        primeira_oracao.append(tag)
+        i = i + 1
+        while i != len(tagged) - 1:
+            print(tagged[i])
+            if (tagged[i][1][0] != 'V') and (tagged[i][1] != 'PRP'):
+                primeira_oracao.append(tagged[i])
+                i = i + 1
+            else:
+                break
+        segunda_oracao = tagged[i:]
+
+    for i, tag in enumerate(primeira_oracao):
+        primeira_oracao[i] = tag[0]
+    for i, tag in enumerate(segunda_oracao):
+        segunda_oracao[i] = tag[0]
 
     primeira_oracao = ' '.join(primeira_oracao)
     segunda_oracao = ' '.join(segunda_oracao)

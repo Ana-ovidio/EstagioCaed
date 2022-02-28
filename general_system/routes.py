@@ -6,6 +6,7 @@ from PIL import Image
 from general_system import app, data_base, bcrypt
 from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile, FormCreatePost
 from general_system.models import Usuario, Post
+from plt_nltk.origem import modifica_bory_text
 
 
 @app.route('/')
@@ -128,6 +129,10 @@ def create_post():
         post.changes = current_changes(form_post)
         data_base.session.add(post)
         data_base.session.commit()
+        if post.changes != '':
+            modifica_bory_text(post.changes, post.bory_text, post.id_user)
+        else:
+            flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-info')
         flash(f'Post criado com sucesso!', 'alert-success')
         return redirect(url_for('home'))
     return render_template('create_posts.html', form_post=form_post)
