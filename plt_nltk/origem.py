@@ -17,7 +17,7 @@ def estima_complexidade(sentenca, lista_modificacoes, opcoes_mudanca):
 def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
                     nivel_ensino, nome_arquivo):
     horario = time.strftime("%Y%m%d-%H%M%S")
-    caminho = '../../results/'
+    caminho = '../results/'
     with open(caminho + f'{nome_arquivo}.txt', 'w') as txt:
         txt.write(f'Sentença informada pelo autor/ pela autora:\n')
         txt.write(f'{sentenca}\n')

@@ -53,7 +53,6 @@ class Complexidade():
         for modificacao in self.modificacoes:
             if modificacao in list(dificuldade_escolha.keys()):
                 complexidades.append(dificuldade_escolha[modificacao])
-
         return max(complexidades)
 
     def define_complexidade(self):

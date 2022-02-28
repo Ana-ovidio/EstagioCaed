@@ -129,10 +129,18 @@ def create_post():
         post.changes = current_changes(form_post)
         data_base.session.add(post)
         data_base.session.commit()
-        if post.changes != '':
-            modifica_bory_text(post.changes, post.bory_text, post.id_user)
+        print(post.changes)
+        print(type(post.changes))
+
+        if ';' in post.changes:
+            list_changes = post.changes.split(';')
         else:
-            flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-info')
+            list_changes = [post.changes]
+
+        if post.changes != '':
+            modifica_bory_text(list_changes, post.bory_text, str(post.id_user)+'_'+post.title)
+        else:
+            flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
         flash(f'Post criado com sucesso!', 'alert-success')
         return redirect(url_for('home'))
     return render_template('create_posts.html', form_post=form_post)
