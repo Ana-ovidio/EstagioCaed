@@ -2,40 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd0c9673-3e31-4cb7-b1b1-385ead8a245e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentacao/permutacao_sujeito_indeterminado.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/documentacao/permutacao_sujeito_indeterminado.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general_system/AtividadesCaed.db" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/AtividadesCaed.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general_system/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAED32d0635d0192c6b9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAED32d0635d0192c6b96b598cc9a7ca4ee1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAED32d0635d0192c6b96b598cc9a7ca4ee1ea251ce3236476fe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAED66ec7afaeaf23ff7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAEDd7bb3e6a8af00248.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_navbar/segundo_slide.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/static/image_navbar/segundo_slide.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/image_navbar/terceiro_slide.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/static/image_navbar/terceiro_slide.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/13d00eaec62048ea.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/15e577a4ab30cdc7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_Criando para editar novo post.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_Criando para editar.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_Fundação CAED.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_Segundo Post.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_para o renan .txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/1_para o renan 2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/20220227-130703.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/356ffa3aadf12237.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/6af4662469a0c340.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/78796ba99af868b5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/b9900a9f20794232.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/static/results/c33103d246841953.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/create_posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/create_posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/expose_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/expose_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/my_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/my_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/register_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/register_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/works.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/works.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_system/static/image_id_user/CAED9af6e305debd4662.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_system/static/results/553fe37fd3cdf2c4.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

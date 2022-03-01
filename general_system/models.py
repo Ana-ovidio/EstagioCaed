@@ -20,7 +20,7 @@ class Usuario(data_base.Model, UserMixin):
 
 class Post(data_base.Model):
     id = data_base.Column(data_base.Integer, primary_key=True)
-    title = data_base.Column(data_base.String, nullable=False, unique=True)
+    title = data_base.Column(data_base.String, nullable=False)
     body_text = data_base.Column(data_base.Text, nullable=False)
     date_create = data_base.Column(data_base.DateTime, nullable=False, default=datetime.utcnow)
     id_user = data_base.Column(data_base.Integer, data_base.ForeignKey('usuario.id'), nullable=False)

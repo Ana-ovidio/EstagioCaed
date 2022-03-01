@@ -1,13 +1,14 @@
 Sentença informada pelo autor/ pela autora:
-O carro atropelou o menino.
+A menina comeu o bolo. 
 ----------------------------------------
 
 MODIFICAÇÕES
 Modificação de voz ativa e passiva:
-O menino foi atropelado pelo carro.
+O bolo foi comido pela menina.
 ----------------------------------------
 Palavras canônicas:
-menino
+menina
+bolo
 ----------------------------------------
 
 NÍVEL DE COMPLEXIDADE: Ensino Superior
