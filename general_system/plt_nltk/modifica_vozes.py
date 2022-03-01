@@ -2,7 +2,7 @@ import nltk
 import pyinflect
 import spacy
 from deep_translator import GoogleTranslator
-from class_mod_vozes import MudaVoz
+from general_system.plt_nltk.class_mod_vozes import MudaVoz
 
 spacy.cli.download("en_core_web_sm")
 

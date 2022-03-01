@@ -6,7 +6,7 @@ from PIL import Image
 from general_system import app, data_base, bcrypt
 from general_system.forms import FormCreateAccount, FormLogin, FormEditProfile, FormCreatePost
 from general_system.models import Usuario, Post
-from plt_nltk.origem import modifica_bory_text
+from general_system.plt_nltk.origem import modifica_body_text
 
 
 @app.route('/')
@@ -127,18 +127,21 @@ def create_post():
     if form_post.validate_on_submit():
         post = Post(title=form_post.title.data, bory_text=form_post.bory_text.data, id_user=current_user.id)
         post.changes = current_changes(form_post)
-        data_base.session.add(post)
-        data_base.session.commit()
 
         if ';' in post.changes:
             list_changes = post.changes.split(';')
         else:
             list_changes = [post.changes]
 
+        caminho = None
         if post.changes != '':
-            modifica_bory_text(list_changes, post.bory_text, str(post.id_user) + '_' + post.title)
+            caminho = modifica_body_text(list_changes, post.bory_text, secrets.token_hex(8))
         else:
             flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
+
+        post.files_path = caminho
+        data_base.session.add(post)
+        data_base.session.commit()
         flash(f'Post criado com sucesso!', 'alert-success')
         return redirect(url_for('home'))
     return render_template('create_posts.html', form_post=form_post)
@@ -163,6 +166,19 @@ def expose_post(post_id):
             post.changes = current_changes(form_edit_post)
             # Save in the base data.
             data_base.session.commit()
+
+            if ';' in post.changes:
+                list_changes = post.changes.split(';')
+            else:
+                list_changes = [post.changes]
+
+            caminho = None
+            if post.changes != '':
+                caminho = modifica_body_text(list_changes, post.bory_text, secrets.token_hex(8))
+            else:
+                flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
+
+            post.files_path = caminho
             flash(f'Post editado com sucesso!', 'alert-success')
             return redirect(url_for('home'))
     else:

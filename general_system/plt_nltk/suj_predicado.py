@@ -1,6 +1,6 @@
 import nltk
 from deep_translator import GoogleTranslator
-from class_permuta import Permutacoes
+from general_system.plt_nltk.class_permuta import Permutacoes
 
 
 def tokenizacao(traduzir_ingles):

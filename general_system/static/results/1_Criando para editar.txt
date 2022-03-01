@@ -1,0 +1,14 @@
+Sentença informada pelo autor/ pela autora:
+A menina é bonita
+----------------------------------------
+
+MODIFICAÇÕES
+Trocar de gênero:
+O menino é bonito ..
+----------------------------------------
+Palavras canônicas:
+menina
+bonita
+----------------------------------------
+
+NÍVEL DE COMPLEXIDADE: Ensino Fundamental 3

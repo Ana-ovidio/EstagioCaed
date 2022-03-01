@@ -2,11 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd0c9673-3e31-4cb7-b1b1-385ead8a245e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/general_system/templates/expose_post.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/general_system/plt_nltk/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general_system/AtividadesCaed.db" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/AtividadesCaed.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_system/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/general_system/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/general_system/templates/works.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/works.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general_system/templates/expose_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/templates/expose_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/class_mod_vozes.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/class_mod_vozes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/class_permuta.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/class_permuta.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/class_troca_genero.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/class_troca_genero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/complexidade.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/complexidade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/modifica_vozes.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/modifica_vozes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/origem.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/origem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/sem_sujeito.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/sem_sujeito.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/separacao_silabica.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/separacao_silabica.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/suj_predicado.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/suj_predicado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/troca_adj.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/troca_adj.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plt_nltk/troca_genero.py" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/plt_nltk/troca_genero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/1_Fundação CAED.txt" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/static/results/1_Fundação CAED.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/20220227-130703.txt" beforeDir="false" afterPath="$PROJECT_DIR$/general_system/static/results/20220227-130703.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -36,10 +53,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../teste" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ana Carolina Ovídio\OneDrive\Área de Trabalho\ProvaCaed\general_system" />
+      <recent name="C:\Users\Ana Carolina Ovídio\OneDrive\Área de Trabalho\ProvaCaed\general_system\static" />
       <recent name="C:\Users\Ana Carolina Ovídio\OneDrive\Área de Trabalho\ProvaCaed" />
     </key>
   </component>
@@ -52,11 +71,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plt_nltk" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plt_nltk/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -78,6 +97,48 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code_site/plt_nltk/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ProvaCaed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plt_nltk" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Ana Carolina Ovídio\OneDrive\Área de Trabalho\ProvaCaed\main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="origem (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ProvaCaed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/general_system/plt_nltk" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/general_system/plt_nltk/origem.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,8 +171,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.origem" />
+        <item itemvalue="Python.origem (1)" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.origem" />
       </list>
     </recent_temporary>
   </component>

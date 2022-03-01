@@ -27,6 +27,11 @@
                         {%if form_post %}
                            -- <a style="text-decoration: none" href="#form_editpost">Editar post</a>
                             / <a class="text-danger" style="text-decoration: none" href="#" data-bs-toggle="modal" data-bs-target="#DeletePost">Excluir Post</a>
+                            {% if post.changes != ''%}
+                                / <a style="text-decoration: none" href="{{url_for('static', filename='{}'.format(post.files_path))}}" download >
+                                     Download
+                                </a>
+                            {% endif %}
                         {% endif %}
 
                         </small>

@@ -1,11 +1,13 @@
 import time
-import troca_genero
-import troca_adj
-import sem_sujeito
-import suj_predicado
-import modifica_vozes
-import separacao_silabica
-from complexidade import Complexidade
+import os
+import general_system.plt_nltk.troca_genero
+import general_system.plt_nltk.troca_adj
+import general_system.plt_nltk.sem_sujeito
+import general_system.plt_nltk.suj_predicado
+import general_system.plt_nltk.modifica_vozes
+import general_system.plt_nltk.separacao_silabica
+from general_system import app
+from general_system.plt_nltk.complexidade import Complexidade
 
 
 def estima_complexidade(sentenca, lista_modificacoes, opcoes_mudanca):
@@ -17,8 +19,9 @@ def estima_complexidade(sentenca, lista_modificacoes, opcoes_mudanca):
 def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
                     nivel_ensino, nome_arquivo):
     horario = time.strftime("%Y%m%d-%H%M%S")
-    caminho = '../results/'
-    with open(caminho + f'{nome_arquivo}.txt', 'w') as txt:
+    all_path = os.path.join(app.root_path, 'static/results', nome_arquivo)
+    caminho = 'results/{}'.format(nome_arquivo)
+    with open(all_path, 'w') as txt:
         txt.write(f'Sentença informada pelo autor/ pela autora:\n')
         txt.write(f'{sentenca}\n')
         txt.write('----------------------------------------')
@@ -26,19 +29,19 @@ def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
         for modificacao in lista_modificacoes:
 
             if modificacao == opcoes_mudanca[0]:
-                nova_sentenca = troca_genero.integra_funcoes(sentenca)
+                nova_sentenca = general_system.plt_nltk.troca_genero.integra_funcoes(sentenca)
                 txt.write(f'{opcoes_mudanca[0]}:\n{nova_sentenca}\n')
                 txt.write('----------------------------------------')
                 txt.write('\n')
 
             elif modificacao == opcoes_mudanca[1]:
-                nova_sentenca = troca_adj.integra_funcoes(sentenca)
+                nova_sentenca = general_system.plt_nltk.troca_adj.integra_funcoes(sentenca)
                 txt.write(f'{opcoes_mudanca[1]}:\n{nova_sentenca}\n')
                 txt.write('----------------------------------------')
                 txt.write('\n')
 
             elif modificacao == opcoes_mudanca[2]:
-                permutacoes = sem_sujeito.integra_funcoes(sentenca)
+                permutacoes = general_system.plt_nltk.sem_sujeito.integra_funcoes(sentenca)
                 txt.write(f'Permutações entre orações sem sujeito:\n')
                 for permutacao in permutacoes:
                     txt.write(f'{permutacao}\n')
@@ -46,7 +49,7 @@ def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
                 txt.write('\n')
 
             elif modificacao == opcoes_mudanca[3]:
-                permutacoes = suj_predicado.integra_funcoes(sentenca)
+                permutacoes = general_system.plt_nltk.suj_predicado.integra_funcoes(sentenca)
                 txt.write(f'Permutações entre elementos de uma oração:\n')
                 for permutacao in permutacoes:
                     txt.write(f'{permutacao}\n')
@@ -54,12 +57,12 @@ def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
                 txt.write('\n')
 
             elif modificacao == opcoes_mudanca[4]:
-                nova_sentenca = modifica_vozes.integra_funcoes(sentenca)
+                nova_sentenca = general_system.plt_nltk.modifica_vozes.integra_funcoes(sentenca)
                 txt.write(f'Modificação de voz ativa e passiva:\n{nova_sentenca}\n')
                 txt.write('----------------------------------------')
                 txt.write('\n')
             else:
-                palavras_canonicas = separacao_silabica.integra_funcoes(sentenca)
+                palavras_canonicas = general_system.plt_nltk.separacao_silabica.integra_funcoes(sentenca)
                 txt.write(f'{opcoes_mudanca[5]}:\n')
                 for palavra in palavras_canonicas:
                     txt.write(f'{palavra}\n')
@@ -67,9 +70,10 @@ def create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
                 txt.write('\n')
         txt.write(f'\nNÍVEL DE COMPLEXIDADE: {nivel_ensino}\n')
     txt.close()
+    return caminho
 
 
-def modifica_bory_text(lista_modificacoes, sentenca, nome_arquivo):
+def modifica_body_text(lista_modificacoes, sentenca, nome_arquivo):
     opcoes_mudanca = ['Trocar de gênero',
                       'Trocar adjetivos por sinônimo/antônimos',
                       'Paráfrase i',
@@ -77,8 +81,10 @@ def modifica_bory_text(lista_modificacoes, sentenca, nome_arquivo):
                       'Paráfrase iii',
                       'Palavras canônicas']
 
+    nome_arquivo = nome_arquivo+'.txt'
     nivel_ensino = estima_complexidade(sentenca,
                                        lista_modificacoes,
                                        opcoes_mudanca)
-    create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
-                    nivel_ensino, nome_arquivo)
+    caminho = create_file_txt(sentenca, lista_modificacoes, opcoes_mudanca,
+                              nivel_ensino, nome_arquivo)
+    return caminho
