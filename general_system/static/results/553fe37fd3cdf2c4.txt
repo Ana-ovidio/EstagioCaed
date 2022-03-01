@@ -1,13 +1,13 @@
 Sentença informada pelo autor/ pela autora:
-A menina pegou o objeto
+O carro atropelou o menino.
 ----------------------------------------
 
 MODIFICAÇÕES
 Modificação de voz ativa e passiva:
-O objeto foi levado pela garota.
+O menino foi atropelado pelo carro.
 ----------------------------------------
 Palavras canônicas:
-menina
+menino
 ----------------------------------------
 
 NÍVEL DE COMPLEXIDADE: Ensino Superior

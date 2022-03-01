@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block bory %}
+{% block body %}
 
     <div class="container">
         <div align="center">
@@ -27,16 +27,16 @@
                             {% endif %}
                         </div>
                          <div class="form-group">
-                            {{ form_post.bory_text.label(class="form-control-label") }}
-                            {% if form_post.bory_text.errors %}
-                                {{ form_post.bory_text(class="form-control is-invalid") }}
+                            {{ form_post.body_text.label(class="form-control-label") }}
+                            {% if form_post.body_text.errors %}
+                                {{ form_post.body_text(class="form-control is-invalid") }}
                             <div class="invalid-feedback">
-                                {% for error in form_post.bory_text.errors %}
+                                {% for error in form_post.body_text.errors %}
                                     {{ error }}
                                 {% endfor %}
                             </div>
                             {% else %}
-                                {{ form_post.bory_text(class="form-control") }}
+                                {{ form_post.body_text(class="form-control") }}
                             {% endif %}
                         </div>
 

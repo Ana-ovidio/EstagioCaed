@@ -29,7 +29,7 @@ def register_login():
     if form_account.validate_on_submit() and "button_submit_account" in request.form:
         password_encrypted = bcrypt.generate_password_hash(form_account.password.data)
         people = Usuario(username=form_account.username.data, email=form_account.email.data,
-                         password=password_encrypted)
+                         password=password_encrypted, description=form_account.description.data)
         data_base.session.add(people)
         data_base.session.commit()
         flash(f'Cadastro de {form_account.username.data} realizado com sucesso.', 'alert-success')
@@ -97,6 +97,7 @@ def edit_profile():
     if form_profile.validate_on_submit():
         current_user.username = form_profile.username.data
         current_user.email = form_profile.email.data
+        current_user.description = form_profile.description.data
         if form_profile.photo_profile.data:
             name_file = save_image_profile(form_profile.photo_profile.data)
             current_user.perf_photo = name_file
@@ -107,6 +108,7 @@ def edit_profile():
     elif request.method == 'GET':
         form_profile.username.data = current_user.username
         form_profile.email.data = current_user.email
+        form_profile.description.data = current_user.description
     return render_template('edit_profile.html', image_id=image_id, form_profile=form_profile)
 
 
@@ -125,7 +127,7 @@ def current_changes(form_post):
 def create_post():
     form_post = FormCreatePost()
     if form_post.validate_on_submit():
-        post = Post(title=form_post.title.data, bory_text=form_post.bory_text.data, id_user=current_user.id)
+        post = Post(title=form_post.title.data, body_text=form_post.body_text.data, id_user=current_user.id)
         post.changes = current_changes(form_post)
 
         if ';' in post.changes:
@@ -135,7 +137,7 @@ def create_post():
 
         caminho = None
         if post.changes != '':
-            caminho = modifica_body_text(list_changes, post.bory_text, secrets.token_hex(8))
+            caminho = modifica_body_text(list_changes, post.body_text, secrets.token_hex(8))
         else:
             flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
 
@@ -157,12 +159,12 @@ def expose_post(post_id):
         # Automatic fill in the forms.
         if request.method == 'GET':
             form_edit_post.title.data = post.title
-            form_edit_post.bory_text.data = post.bory_text
+            form_edit_post.body_text.data = post.body_text
         # Contrary of the above struct.
         # The user will fill the fields.
         elif form_edit_post.validate_on_submit():
             post.title = form_edit_post.title.data
-            post.bory_text = form_edit_post.bory_text.data
+            post.body_text = form_edit_post.body_text.data
             post.changes = current_changes(form_edit_post)
             # Save in the base data.
             data_base.session.commit()
@@ -174,7 +176,7 @@ def expose_post(post_id):
 
             caminho = None
             if post.changes != '':
-                caminho = modifica_body_text(list_changes, post.bory_text, secrets.token_hex(8))
+                caminho = modifica_body_text(list_changes, post.body_text, secrets.token_hex(8))
             else:
                 flash('Não há nenhuma demanda de modificação para o seu último post criado', 'alert-warning')
 

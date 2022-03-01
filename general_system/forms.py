@@ -11,7 +11,9 @@ class FormCreateAccount(FlaskForm):
     email = StringField('E-mail:', validators=[DataRequired(), Email()])
     password = PasswordField('Senha:', validators=[DataRequired(), Length(6, 20)])
     confirmation_password = PasswordField('Confirmar senha:', validators=[DataRequired(), EqualTo('password')])
+    description = StringField('Descrição', validators=[DataRequired()])
     button_submit_account = SubmitField('Criar uma conta')
+
 
     def validate_email(self, email):
         usuario = Usuario.query.filter_by(email=email.data).first()
@@ -29,6 +31,7 @@ class FormLogin(FlaskForm):
 class FormEditProfile(FlaskForm):
     username = StringField('Nome de usuário:', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
+    description = StringField('Descrição', validators=[DataRequired()])
     error_message = 'Extensão inválida, insira arquivos com jpeg, jpg, jfif ou png.'
     photo_profile = FileField('Atualizar foto de perfil: ', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'jfif'],
                                                                                     message=error_message)])
@@ -43,8 +46,9 @@ class FormEditProfile(FlaskForm):
 
 class FormCreatePost(FlaskForm):
     title = StringField('Título do post', validators=[DataRequired(), Length(2, 140)])
-    bory_text = TextAreaField('Escreva seu post aqui: ', validators=[DataRequired()])
+    body_text = TextAreaField('Escreva seu post aqui: ', validators=[DataRequired()])
     button_submit_create_post = SubmitField('Criar Post')
+    button_submit_edit_post = SubmitField('Editar Post')
 
     work_change_genre = BooleanField('Trocar de gênero')
     work_change_adjective = BooleanField('Trocar adjetivos por sinônimo/antônimos')

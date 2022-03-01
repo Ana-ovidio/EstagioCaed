@@ -37,6 +37,20 @@
                                 {{form_profile.email (class="form-control form-control-sm mt-0.5 ")}}
                             {% endif %}
                         </div>
+
+                        <div class = 'form-group'>
+                            {{form_profile.description.label (class="form-control-label")}}
+                            {% if form_profile.description.errors %}
+                            {{form_profile.description (class="form-control form-control-sm is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_profile.description.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_profile.description (class="form-control form-control-sm mt-0.5 ")}}
+                            {% endif %}
+                        </div>
                         <!-- Photo field  -->
                         <div class="form-group">
                             {{ form_profile.photo_profile.label }}

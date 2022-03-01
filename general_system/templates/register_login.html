@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block bory %}
+{% block body %}
     <div class="container" xmlns="http://www.w3.org/1999/html">
         <div align="center">
         <h1 ><font size="3">Faça login ou crie uma conta para continuar</font></h1>
@@ -82,6 +82,20 @@
                             </div>
                             {% else %}
                                 {{form_account.email (class="form-control mt-0.5 ")}}
+                            {% endif %}
+                        </div>
+
+                        <div class = 'form-group'>
+                            {{form_account.description.label (class="form-control-label")}}
+                            {% if form_account.description.errors %}
+                            {{form_account.description (class="form-control is-invalid mt-0.5 ")}}
+                            <div class="invalid-feedback">
+                                {% for error in form_account.description.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{form_account.description (class="form-control mt-0.5 ")}}
                             {% endif %}
                         </div>
 
