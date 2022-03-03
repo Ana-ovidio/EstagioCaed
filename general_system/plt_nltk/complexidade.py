@@ -2,7 +2,7 @@ import nltk
 from deep_translator import GoogleTranslator
 
 
-class Complexidade():
+class Complexidade:
     def __init__(self, sentenca, modificacoes, opcoes_mudanca):
         self.sentenca = sentenca
         self.modificacoes = modificacoes

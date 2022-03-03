@@ -1,6 +1,5 @@
 import nltk
 
-
 def tokenizacao(sentenca):
     tokens = nltk.word_tokenize(sentenca)
     if '.' in tokens:

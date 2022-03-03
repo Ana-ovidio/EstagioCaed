@@ -1,4 +1,4 @@
-class MudaVoz():
+class MudaVoz:
 
     def __init__(self, objeto, sujeito, tagged, posicao_verbo,
                  posicao_sujeito, posicao_objeto):

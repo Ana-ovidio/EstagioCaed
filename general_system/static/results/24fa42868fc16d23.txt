@@ -1,0 +1,16 @@
+Sentença informada pelo autor/ pela autora:
+Roberto Carlos, o cantor, fez aniversário
+----------------------------------------
+
+MODIFICAÇÕES
+Permutações entre elementos de uma oração:
+Roberto Carlos o cantor fez aniversário.
+Teve aniversário roberto Carlos o cantor.
+O cantor roberto Carlos fez aniversário.
+Fez aniversário o cantor roberto Carlos.
+----------------------------------------
+Palavras canônicas:
+Não há palavras canônicas na sentença.
+----------------------------------------
+
+NÍVEL DE COMPLEXIDADE: Ensino Medio

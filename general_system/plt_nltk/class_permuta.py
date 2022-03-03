@@ -1,7 +1,7 @@
 from itertools import permutations
 
 
-class Permutacoes():
+class Permutacoes:
 
     def __init__(self, tagged=None, oracoes=None):
         self.tagged = tagged

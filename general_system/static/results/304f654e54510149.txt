@@ -1,0 +1,13 @@
+Sentença informada pelo autor/ pela autora:
+Muito compreensiva, a professora desenvolveu várias atividades para os alunos
+----------------------------------------
+
+MODIFICAÇÕES
+Permutações entre elementos de uma oração:
+A professora muito compreensiva desenvolveu várias atividades para os alunos.
+Desenvolveu várias atividades para os alunos o professor muito compreensivo.
+Muito compreensiva a professora desenvolveu várias atividades para os alunos.
+Desenvolvi várias atividades para que os alunos entendessem muito bem o professor.
+----------------------------------------
+
+NÍVEL DE COMPLEXIDADE: Ensino Medio

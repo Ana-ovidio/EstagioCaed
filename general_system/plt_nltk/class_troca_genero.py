@@ -1,4 +1,4 @@
-class TrocaGenero():
+class TrocaGenero:
     def __init__(self, genero, tokens):
 
         self.tokens = tokens
