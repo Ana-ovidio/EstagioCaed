@@ -11,3 +11,5 @@ deep_translator
 spacy
 pyinflect
 nltk
+nltk
+unicorn

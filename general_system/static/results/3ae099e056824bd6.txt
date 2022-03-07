@@ -1,0 +1,13 @@
+Sentença informada pelo autor/ pela autora:
+A Segunda Guerra Mundial, um conflito militar entre 1939 e 1945, envolveu as maiores potências da época
+----------------------------------------
+
+MODIFICAÇÕES
+Permutações entre elementos de uma oração:
+A Segunda Guerra Mundial um conflito militar entre 1939 e 1945 envolveu as maiores potências da época.
+Envolveu as maiores potências da época na Segunda Guerra Mundial um conflito militar entre 1939 e 1945.
+Um conflito militar entre 1939 e 1945 na Segunda Guerra Mundial envolveu as maiores potências da época.
+Envolveu as maiores potências da época um conflito militar entre 1939 e 1945 na Segunda Guerra Mundial.
+----------------------------------------
+
+NÍVEL DE COMPLEXIDADE: Ensino Medio

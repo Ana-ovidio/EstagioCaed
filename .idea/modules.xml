@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ProvaCaed.iml" filepath="$PROJECT_DIR$/.idea/ProvaCaed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ProvaOnlineCAED.iml" filepath="$PROJECT_DIR$/.idea/ProvaOnlineCAED.iml" />
     </modules>
   </component>
 </project>
